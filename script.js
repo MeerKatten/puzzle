@@ -32,7 +32,7 @@ function checkAnswer() {
   if (userAnswer === currentQuestion.answer) {
     document.getElementById('question').textContent = currentQuestion.question;
     document.getElementById('answer').value = '';
-    document.getElementById('message').textContent = 'Here is the next clue'; // Update this line
+    document.getElementById('message').textContent = 'Joskus täällä pystyi pingistäkin pelata, enään ei kannata mennä ovea pidemmälle.'; // Update this line
     clearInterval(timer);
     timeRemaining = 20;
     startTimer();
