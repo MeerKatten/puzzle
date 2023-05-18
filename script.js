@@ -32,7 +32,7 @@ function checkAnswer() {
   if (userAnswer === currentQuestion.answer) {
     document.getElementById('question').textContent = currentQuestion.question;
     document.getElementById('answer').value = '';
-    console.log('Here is the next clue');
+    document.getElementById('message').textContent = 'Here is the next clue'; // Update this line
     clearInterval(timer);
     timeRemaining = 20;
     startTimer();
