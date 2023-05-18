@@ -20,7 +20,9 @@ function startTimer() {
 
     if (timeRemaining < 0) {
       clearInterval(timer);
+      timeRemaining = 20;
       currentQuestion = generateQuestion();
+      document.getElementById('question').textContent = currentQuestion.question;
       startTimer();
     }
   }, 1000);
@@ -30,13 +32,13 @@ function checkAnswer() {
   const userAnswer = parseInt(document.getElementById('answer').value);
 
   if (userAnswer === currentQuestion.answer) {
-    document.getElementById('question').textContent = currentQuestion.question;
+    document.getElementById('message').textContent = 'Joskus täällä pystyi pingistäkin pelata, enään ei kannata mennä ovea pidemmälle.';
     document.getElementById('answer').value = '';
-    document.getElementById('message').textContent = 'Joskus täällä pystyi pingistäkin pelata, enään ei kannata mennä ovea pidemmälle.'; // Update this line
     clearInterval(timer);
     timeRemaining = 20;
-    startTimer();
     currentQuestion = generateQuestion();
+    document.getElementById('question').textContent = currentQuestion.question;
+    startTimer();
   } else {
     console.log('Incorrect answer');
   }
