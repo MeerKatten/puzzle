@@ -32,7 +32,10 @@ function checkAnswer() {
   } else {
     console.log('Incorrect answer');
   }
+
+  return false;
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('question').textContent = currentQuestion.question;
