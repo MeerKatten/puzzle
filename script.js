@@ -11,12 +11,19 @@ function generateQuestion() {
 
 let currentQuestion = generateQuestion();
 let timer;
+let timeRemaining = 20;
 
 function startTimer() {
-  timer = setTimeout(() => {
-    currentQuestion = generateQuestion();
-    startTimer();
-  }, 20000);
+  timer = setInterval(() => {
+    document.getElementById('timer').textContent = timeRemaining;
+    timeRemaining--;
+
+    if (timeRemaining < 0) {
+      clearInterval(timer);
+      currentQuestion = generateQuestion();
+      startTimer();
+    }
+  }, 1000);
 }
 
 function checkAnswer() {
@@ -26,7 +33,8 @@ function checkAnswer() {
     document.getElementById('question').textContent = currentQuestion.question;
     document.getElementById('answer').value = '';
     console.log('Here is the next clue');
-    clearTimeout(timer);
+    clearInterval(timer);
+    timeRemaining = 20;
     startTimer();
     currentQuestion = generateQuestion();
   } else {
@@ -35,7 +43,6 @@ function checkAnswer() {
 
   return false;
 }
-
 
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('question').textContent = currentQuestion.question;
